@@ -1,0 +1,21 @@
+{
+  "name": "project-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    
+    "comp": "sass src/scss:dist/css && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/S-Gabrie1/Project-API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/S-Gabrie1/Project-API/issues"
+  },
+  "homepage": "https://github.com/S-Gabrie1/Project-API#readme"
+}
