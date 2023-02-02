@@ -91,7 +91,7 @@ searchBox.addEventListener("keyup", async function(event){
                 capital: data[0].capital
             };
             
-            const exists = searchedCountries.findIndex((c: any) => c.country === countries.country);
+            const exists = searchedCountries.findIndex(c => c.country === countries.country);
             console.log(exists);
 
             if (exists === -1) {
@@ -124,7 +124,6 @@ selectRegion.addEventListener("change", async function(e){
     const optionChosen = urlRegion + selectRegion.value;
     const response = await fetch(optionChosen);
     const data : any[] = await response.json();
-    console.log(data);
 
     secBox.innerHTML = "";
     if(data[0]) {
