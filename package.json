@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "source": "src/index.html",
   "scripts": {
-    
     "comp": "sass src/scss:dist/css && tsc"
+    
   },
   "repository": {
     "type": "git",
@@ -17,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/S-Gabrie1/Project-API/issues"
   },
-  "homepage": "https://github.com/S-Gabrie1/Project-API#readme"
+  "homepage": "https://github.com/S-Gabrie1/Project-API#readme",
+  "dependencies": {
+    "parcel-bundler": "^1.12.5"
+  }
 }
