@@ -8,38 +8,43 @@ body {
     font-family: 'Unbounded', cursive;;
     background-image: url("../../dist/forrest-cavale-qfmd9bu7IgA-unsplash.jpg");
     background-size: 150%;
+    margin: 0px;
+   
 }
 
 h1 {
     text-align: center;
     color: white;
-    grid-area: h;
+    
+}
+
+#error-message {
+    color: rgb(255, 255, 255);
+    font-size: 19px;
+    font-style:oblique;
+    margin-top: 5px;
+    display: none;
+    justify-content: center;
 }
 
 .wrapper {
-    display: flex;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto;
-    grid-template-areas: 
-    "h h h h"
-    "a r g b"
-    "c c c c ";
-    grid-gap: 10px;
+    
       
     .box {
         background-color: $base-color;
         display: flex;
+        align-items: center;
         justify-content: space-around;
         flex-wrap: wrap;
         grid-area: c;
         box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.411);
         border-radius: 5px;
+        min-height: 430px;
         margin: 20px;
         padding: 20px;
         }
         
-         .countryshow, .filterCountry, .country, .divArray{
+         .countryshow, .filterCountry, .country, .saved-countries{
             background-color: $card-color;
             flex-wrap: wrap;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.411);
@@ -48,6 +53,7 @@ h1 {
             width: 250px;
             border-radius: 5px;
             margin: 20px;
+
 
             .country-img {
                 width: 250px;
@@ -58,12 +64,10 @@ h1 {
                     border-top-right-radius: 3px;
                     width: 100%;
                     height: 100%;
-                    object-fit: cover;
+                    
                 }
             }
              
-            
-    
             .country-detail {
                 display: flex;
                 flex-direction: column;
@@ -75,29 +79,31 @@ h1 {
                     padding: none;
                 }
             }
+
         }
-    
-       
+        .err-msg {
+         color: white;
+         font-size: 20px;
+         text-align: center;
+        }
         
     }
     
+    .tomatoes {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+    }
     .search {
-        
-        grid-area: a;
-        width: 100%;
-        margin: 20px;
-        
-        #error-message {
-            color: rgb(255, 255, 255);
-            font-size: 16px;
-            margin-top: 5px;
-            display: none;
+        .search-bar {
+            width: 350px;
         }
+       margin: 20px;
         & input {
             color: white;
+            max-width: 100%;
         }
         & input[type="text"] {
-            border: solid 1px white;
             font-family: inherit;
             background: #414833a8;
             padding: 20px;
@@ -114,75 +120,173 @@ h1 {
     
     .filter {
         display: flex;
-        grid-area: b;
         margin: 20px;
         
-        .drop-down {
-            display: flex;
-    
-            #filter {
+        #filter {
+            width: 350px;    
+            border-radius: 3px;
+            font-family: inherit;
+            box-shadow: 0 0 10px rgba(180, 179, 179, 0.411);
+            outline-style: none;
+            border: none;
+            background-color: #414833a8;
+            padding: 20px;
+            color: white;
                 
-                
-                border-radius: 3px;
-                font-family: inherit;
-                box-shadow: 0 0 10px rgba(180, 179, 179, 0.411);
-                outline-style: none;
-                border: none;
-                background-color: #414833a8;
-                padding: 15px;
-                color: white;
-                
-            }
-            
         }
+            
+        
         
     }
 
-    #potato {
+    .veggies {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         
-        margin: 20px;
-        font-family: inherit;
-        grid-area: g;     
-        background-color: $buttons-color;
-        border: none;
-        color: white;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.411);
-        text-align: center;
-        text-decoration: none;
-        
-        font-size: 16px;
-        cursor: pointer;
-        border-radius: 5px;
-      
-      &:hover {
-        transition: 0.2s;
-        background-color: #58787c;
-      }
-
-    }
-
-    #cherry {
-        margin: 20px;
-        font-family: inherit;
-        grid-area: r;     
-        background-color: $buttons-color;
-        border: none;
-        color: white;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.411);
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        cursor: pointer;
-        border-radius: 5px;
-
-      &:hover {
-        transition: 0.2s;
-        background-color: #58787c;
-      }
-    }
-
+        #potato {
+            padding: 20px;
+            margin: 5px;
+            font-family: inherit;
+            background-color: $buttons-color;
+            border: none;
+            color: white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.411);
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+          
+          &:hover {
+            transition: 0.2s;
+            background-color: #58787c;
+          }
     
+        }
+    
+        #cherry {
+            padding: 20px;
+            margin: 5px;
+            font-family: inherit;
+            background-color: $buttons-color;
+            border: none;
+            color: white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.411);
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+    
+          &:hover {
+            transition: 0.2s;
+            background-color: #58787c;
+          }
+        }
+    }
 
+
+
+
+    @media screen and (max-width: 780px) {
+        h1{
+            font-size: 25px;
+        }
+        #error-message {
+            color: rgb(255, 255, 255);
+            font-size: 16px;
+            font-style:oblique;
+            margin-top: 5px;
+            display: none;
+            justify-content: center;
+        }
+
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            .box {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+                flex-direction: row;
+                margin: 20px;
+                padding: 0px;
+
+                .countryshow, .country, .filterCountry, .saved-countries {
+                    flex-direction: row;
+                    min-height: 0px;
+                    margin: 10px;
+                    height: 68px;
+                    width: 125px;
+                    border-top-left-radius: 0px;
+                    border-top-right-radius: 0px;
+
+                    .country-img{
+
+                        & img {
+                            height: 50%;
+                            width: 50%;
+                        }
+                    }
+                    .country-detail {
+                        display: none;
+                        
+                    }
+                }    
+
+            }
+
+            .tomatoes {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+
+                .search {
+                    
+                    
+                    & input {
+                        margin-right: 5px;
+                        padding: 20px;
+                        display: inline-block;
+                        max-width: 80px;
+                        min-width: 100%;
+                    }
+                }
+                
+                .filter {
+                    
+                    #filter {
+                        margin-left: 5px;
+                        padding: 20px;
+                        max-width: 180px;
+                        min-width: 100%;
+                    }
+                }
+            }
+
+
+            .veggies {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+
+               & #cherry{
+                   font-size: 13px;
+                   
+                }
+
+               & #potato {
+                    text-align: center;
+                    font-size: 13px;
+                    
+                }
+            }
+
+            
+            
+
+        }
+
+    }
 
 

@@ -10,11 +10,35 @@ const urlRegion = "https://restcountries.com/v3.1/region/"
 const urlAll = "https://restcountries.com/v3.1/all";
 const urlSearch = "https://restcountries.com/v3.1/name/"
 
-let searchedCountries: any = [];
+
+
+type countryArr = {
+    country: string;
+    flags: string;
+    population: number;
+    region: string;
+    capital: string;
+}
+
+type countryData = {
+    name: {
+        common : string;
+    }
+    flags: {
+        png: string;
+    }
+    population : number;
+    region: string;
+    capital: string;
+}
+
+let searchedCountries: countryArr[] = [];
+
+
 
 
 // ===> function for DOM manupilation
-const countryHTML = (country: any) => `
+const countryHTML = (country: countryData) => `
   <div class="country-img">
     <img src="${country.flags.png}">
   </div>
@@ -59,28 +83,41 @@ searchBox.addEventListener("keyup", async function(event){
     if (event.key === "Enter") {
         secBox.innerHTML = "";
         if (data[0]) {
-            divBox.innerHTML = countryHTML(data[0]);
-            errorMessage.style.display = "none";
-            divBox.style.display = "block";
-            searchedCountries.push({
+            const countries: countryArr = {
                 country: data[0].name.common,
                 flags: data[0].flags.png,
                 population: data[0].population,
                 region: data[0].region,
                 capital: data[0].capital
-            });
+            };
+            
+            const exists = searchedCountries.findIndex((c: any) => c.country === countries.country);
+            console.log(exists);
+
+            if (exists === -1) {
+                searchedCountries.push(countries);
+            } else {
+                searchedCountries.splice(exists, 1);
+                searchedCountries.unshift(countries);
+            }
+
+            divBox.innerHTML = countryHTML(data[0]);
+            errorMessage.style.display = "none";
+            divBox.style.display = "block";
+          
         } else {
-            errorMessage.innerText = "Country not found, please try again";
+            errorMessage.innerText = "Country not found, please try again !";
             errorMessage.style.display = "flex";
             getCountries();
         }
         searchBox.value = "";
         secBox.append(divBox);
+        
     }
-    console.log(searchedCountries);
+    
 });
 
-
+console.log(searchedCountries);
 // ===> show the Countries according to their region
 selectRegion.addEventListener("change", async function(e){
     e.preventDefault();
@@ -90,14 +127,18 @@ selectRegion.addEventListener("change", async function(e){
     console.log(data);
 
     secBox.innerHTML = "";
+    if(data[0]) {
+        data.forEach(country => {
+            const countryDiv = document.createElement("div");
+            countryDiv.className = "filterCountry"
+            countryDiv.innerHTML = countryHTML(country);
+            secBox.append(countryDiv);
+    
+        });
 
-    data.forEach(country => {
-        const countryDiv = document.createElement("div");
-        countryDiv.className = "filterCountry"
-        countryDiv.innerHTML = countryHTML(country);
-        secBox.append(countryDiv);
-
-    });
+    } else {
+        getCountries();
+    }
 
 })
 
@@ -114,24 +155,34 @@ btn1.addEventListener("click", async function(event) {
 btn2.addEventListener("click", async function(event){
     event.preventDefault();
     secBox.innerHTML = "";
-    
-    for (const countries of searchedCountries) {
-        let divArray = document.createElement("div");
-        divArray.className = "divArray";
-        divArray.innerHTML = `
-        <div class="country-img">
-            <img src="${countries.flags}">
-        </div>
-        <div class="country-detail">
-            <h5>${countries.country}</h5>
-            <p>Population: ${countries.population}</p>
-            <p>Region: ${countries.region}</p>
-            <p>Capital: ${countries.capital[0]}</p>
-        </div>
-        `;
-        secBox.append(divArray);
-        console.log(countries);
+
+    if (searchedCountries.length === 0) {
+        let errMsg = document.createElement("p");
+        errMsg.className = "err-msg";
+        errMsg.innerText = "You haven't searched for a country yet";
+        secBox.appendChild(errMsg);
+
+    } else {
+
+        for (const countries of searchedCountries) {
+            let divArray = document.createElement("div");
+            divArray.className = "saved-countries";
+            divArray.innerHTML = `
+            <div class="country-img">
+                <img src="${countries.flags}">
+            </div>
+            <div class="country-detail">
+                <h5>${countries.country}</h5>
+                <p>Population: ${countries.population}</p>
+                <p>Region: ${countries.region}</p>
+                <p>Capital: ${countries.capital[0]}</p>
+            </div>
+            `;
+            secBox.append(divArray);
+            console.log(countries);
+        }
     }
+
 })
 
 

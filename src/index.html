@@ -12,40 +12,39 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Welcome to Country Service</h1>
+    <span id="error-message"></span>            
     <main class="wrapper">
-        <h1>Welcome to Country Service</h1>
-        <section class="search">
-            <input type="text" class="search-bar" placeholder="Search Country">
 
-            <span id="error-message"></span>            
-        </section>
+        <div class="tomatoes">
+            <section class="search">
+                <input type="text" class="search-bar" placeholder="Search Country">
+    
+            </section>
+            <section class="filter">
+                    <select name="filterByRegion" id="filter">
+                        <option >Filter By Region</option>
+                        <option value="Africa">Africa</option>
+                        <option value="Americas">Americas</option>
+                        <option value="Asia">Asia</option>
+                        <option value="Europe">Europe</option>
+                        <option value="Oceania">Oceania</option>
+                    </select>
+            </section>
+
+        </div>
         
-        <section class="filter">
-            <div class="drop-down">
-                <select name="filterByRegion" id="filter">
-                    <option >Filter By Region</option>
-                    <option value="Africa">Africa</option>
-                    <option value="Americas">Americas</option>
-                    <option value="Asia">Asia</option>
-                    <option value="Europe">Europe</option>
-                    <option value="Oceania">Oceania</option>
-                </select>
-            </div>
-        </section>
+        <div class="veggies">
+            <button id="potato">Show Countries</button>
+            <button id="cherry">Saved Countries</button>
+        </div>
         
-        <button id="cherry">Saved Countries</button>
-        <button id="potato">Show More</button>
-        
+
         <section class="box">
             <div class="country">
             </div> 
         </section>
 
-       
-         
-        
-        
-        
     </main>
 </body>
 </html>
