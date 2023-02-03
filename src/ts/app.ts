@@ -11,7 +11,7 @@ const urlAll = "https://restcountries.com/v3.1/all";
 const urlSearch = "https://restcountries.com/v3.1/name/"
 
 
-
+// ==> types for my Array
 type countryArr = {
     country: string;
     flags: string;
@@ -20,6 +20,7 @@ type countryArr = {
     capital: string;
 }
 
+// ==> types for the JSON data
 type countryData = {
     name: {
         common : string;
@@ -92,7 +93,7 @@ searchBox.addEventListener("keyup", async function(event){
             };
             
             const exists = searchedCountries.findIndex(c => c.country === countries.country);
-            console.log(exists);
+            
 
             if (exists === -1) {
                 searchedCountries.push(countries);
@@ -117,7 +118,8 @@ searchBox.addEventListener("keyup", async function(event){
     
 });
 
-console.log(searchedCountries);
+
+
 // ===> show the Countries according to their region
 selectRegion.addEventListener("change", async function(e){
     e.preventDefault();
@@ -142,12 +144,14 @@ selectRegion.addEventListener("change", async function(e){
 })
 
 
+
 // ==> show more countries 
 btn1.addEventListener("click", async function(event) {
     event.preventDefault();
     secBox.innerHTML = "";
     getCountries();
 })
+
 
 
 // ===> Show all the Searched for Countries. 
@@ -174,11 +178,11 @@ btn2.addEventListener("click", async function(event){
                 <h5>${countries.country}</h5>
                 <p>Population: ${countries.population}</p>
                 <p>Region: ${countries.region}</p>
-                <p>Capital: ${countries.capital[0]}</p>
+                <p>Capital: ${countries.capital}</p>
             </div>
             `;
             secBox.append(divArray);
-            console.log(countries);
+            
         }
     }
 
