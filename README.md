@@ -8,10 +8,10 @@
 
 2. ## [How to use](###How-to-use)
   
-  -You press on "Show More" to see 3 more countries which totals to 250
-  -You can search for individual countries & each country you search for will be saved
-  -When you press the Searched countries you will see all the countries you have searched for.
-  -the filter by region function will help navigate countries by specific regions.
+  - You press on "Show More" to see 3 more countries which totals to 250
+  - You can search for individual countries & each country you search for will be saved
+  - When you press the Searched countries you will see all the countries you have searched for.
+  - the filter by region function will help navigate countries by specific regions.
 
 3. ## [Technologies](###technologies)
   
