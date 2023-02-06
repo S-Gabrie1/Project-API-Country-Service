@@ -94,7 +94,6 @@ searchBox.addEventListener("keyup", async function(event){
             
             const exists = searchedCountries.findIndex(c => c.country === countries.country);
             
-
             if (exists === -1) {
                 searchedCountries.push(countries);
             } else {
@@ -188,7 +187,4 @@ btn2.addEventListener("click", async function(event){
 
 })
 
-
 getCountries();
- 
-
