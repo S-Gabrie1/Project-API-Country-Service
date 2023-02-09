@@ -74,6 +74,8 @@ async function getCountries() {
 
 }
 
+
+// === A search function to be used for both the "ENTER key" & "Search Button"
 const searched = async () => {
     const response = await fetch(urlSearch + searchBox.value);
     const data = await response.json();
