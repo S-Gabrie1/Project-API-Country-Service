@@ -1,0 +1,237 @@
+body {
+  background-color: #293241;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Unbounded", cursive;
+  background-image: url("../../dist/forrest-cavale-qfmd9bu7IgA-unsplash.jpg");
+  background-size: 150%;
+  margin: 0px;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+}
+
+#error-message {
+  color: rgb(255, 255, 255);
+  font-size: 19px;
+  font-style: oblique;
+  margin-top: 5px;
+  display: none;
+  justify-content: center;
+}
+
+.wrapper .box {
+  background-color: rgba(65, 72, 51, 0.6588235294);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  grid-area: c;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.411);
+  border-radius: 5px;
+  min-height: 430px;
+  margin: 20px;
+  padding: 20px;
+}
+.wrapper .countryshow, .wrapper .filterCountry, .wrapper .country, .wrapper .saved-countries {
+  background-color: rgba(194, 197, 170, 0.8705882353);
+  flex-wrap: wrap;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.411);
+  border-radius: 2px;
+  min-height: 250px;
+  width: 250px;
+  border-radius: 5px;
+  margin: 20px;
+}
+.wrapper .countryshow .country-img, .wrapper .filterCountry .country-img, .wrapper .country .country-img, .wrapper .saved-countries .country-img {
+  width: 250px;
+  height: 136px;
+}
+.wrapper .countryshow .country-img img, .wrapper .filterCountry .country-img img, .wrapper .country .country-img img, .wrapper .saved-countries .country-img img {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.411);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  width: 100%;
+  height: 100%;
+}
+.wrapper .countryshow .country-detail, .wrapper .filterCountry .country-detail, .wrapper .country .country-detail, .wrapper .saved-countries .country-detail {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+}
+.wrapper .countryshow .country-detail h5, .wrapper .filterCountry .country-detail h5, .wrapper .country .country-detail h5, .wrapper .saved-countries .country-detail h5 {
+  font-size: 20px;
+  align-self: center;
+  padding: none;
+}
+.wrapper .err-msg {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
+
+.tomatoes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search {
+  margin: 20px;
+}
+.search #search-btn {
+  margin: 50px;
+  padding: 0px;
+}
+.search .search-bar {
+  width: 350px;
+}
+.search input {
+  color: white;
+  max-width: 100%;
+}
+.search input[type=text] {
+  font-family: inherit;
+  background: rgba(65, 72, 51, 0.6588235294);
+  padding: 20px;
+  border: none;
+  outline-style: none;
+  box-shadow: 0 0 10px rgba(180, 179, 179, 0.411);
+  border-radius: 3px;
+}
+.search input[type=text]::-moz-placeholder {
+  color: rgb(255, 255, 255);
+}
+.search input[type=text]::placeholder {
+  color: rgb(255, 255, 255);
+}
+
+.filter {
+  display: flex;
+  margin: 20px;
+}
+.filter #filter {
+  width: 350px;
+  border-radius: 3px;
+  font-family: inherit;
+  box-shadow: 0 0 10px rgba(180, 179, 179, 0.411);
+  outline-style: none;
+  border: none;
+  background-color: rgba(65, 72, 51, 0.6588235294);
+  padding: 20px;
+  color: white;
+}
+
+.veggies {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.veggies #potato {
+  padding: 20px;
+  margin: 5px;
+  font-family: inherit;
+  background-color: #A44A3F;
+  border: none;
+  color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.411);
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.veggies #potato:hover {
+  transition: 0.2s;
+  background-color: #58787c;
+}
+.veggies #cherry {
+  padding: 20px;
+  margin: 5px;
+  font-family: inherit;
+  background-color: #A44A3F;
+  border: none;
+  color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.411);
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.veggies #cherry:hover {
+  transition: 0.2s;
+  background-color: #58787c;
+}
+
+@media screen and (max-width: 780px) {
+  h1 {
+    font-size: 25px;
+  }
+  #error-message {
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-style: oblique;
+    margin-top: 5px;
+    display: none;
+    justify-content: center;
+  }
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .wrapper .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 20px;
+    padding: 0px;
+  }
+  .wrapper .box .countryshow, .wrapper .box .country, .wrapper .box .filterCountry, .wrapper .box .saved-countries {
+    flex-direction: row;
+    min-height: 0px;
+    margin: 10px;
+    height: 68px;
+    width: 125px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+  }
+  .wrapper .box .countryshow .country-img img, .wrapper .box .country .country-img img, .wrapper .box .filterCountry .country-img img, .wrapper .box .saved-countries .country-img img {
+    height: 50%;
+    width: 50%;
+  }
+  .wrapper .box .countryshow .country-detail, .wrapper .box .country .country-detail, .wrapper .box .filterCountry .country-detail, .wrapper .box .saved-countries .country-detail {
+    display: none;
+  }
+  .wrapper .tomatoes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .wrapper .tomatoes .search input {
+    margin-right: 5px;
+    padding: 20px;
+    display: inline-block;
+    max-width: 80px;
+    min-width: 100%;
+  }
+  .wrapper .tomatoes .filter #filter {
+    margin-left: 5px;
+    padding: 20px;
+    max-width: 180px;
+    min-width: 100%;
+  }
+  .wrapper .veggies {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  .wrapper .veggies #cherry {
+    font-size: 13px;
+  }
+  .wrapper .veggies #potato {
+    text-align: center;
+    font-size: 13px;
+  }
+}/*# sourceMappingURL=main.css.map */
