@@ -5,6 +5,7 @@ const btn1 = document.querySelector("#potato") as HTMLButtonElement;
 const btn2 = document.querySelector("#cherry") as HTMLButtonElement;
 const searchBox = document.querySelector(".search-bar") as HTMLInputElement;
 const selectRegion = document.querySelector("#filter") as HTMLSelectElement;
+const btn3 = document.querySelector("#search-btn") as HTMLButtonElement;
 
 const urlRegion = "https://restcountries.com/v3.1/region/"
 const urlAll = "https://restcountries.com/v3.1/all";
@@ -73,49 +74,72 @@ async function getCountries() {
 
 }
 
-
-// ==> search for a specific country & saves it into and array to show (searched for countries)
-searchBox.addEventListener("keyup", async function(event){
-    event.preventDefault();
+const searched = async () => {
     const response = await fetch(urlSearch + searchBox.value);
     const data = await response.json();
     const errorMessage = document.getElementById("error-message") as HTMLSpanElement;
 
+    if (data[0]) {
+        const countries: countryArr = {
+            country: data[0].name.common,
+            flags: data[0].flags.png,
+            population: data[0].population,
+            region: data[0].region,
+            capital: data[0].capital
+        };
+        
+        const exists = searchedCountries.findIndex(c => c.country === countries.country);
+        
+        if (exists === -1) {
+            searchedCountries.push(countries);
+        } else {
+            searchedCountries.splice(exists, 1);
+            searchedCountries.unshift(countries);
+        }
+
+        divBox.innerHTML = countryHTML(data[0]);
+        errorMessage.style.display = "none";
+        divBox.style.display = "block";
+      
+    } else {
+        errorMessage.innerText = "Country not found, please try again !";
+        errorMessage.style.display = "flex";
+        getCountries();
+    }
+    searchBox.value = "";
+    secBox.append(divBox);
+    
+};
+
+
+
+
+
+
+// ==> search for a specific country & saves it into and array to show (searched for countries)
+searchBox.addEventListener("keyup", async function(event){
+    event.preventDefault();
     if (event.key === "Enter") {
         secBox.innerHTML = "";
-        if (data[0]) {
-            const countries: countryArr = {
-                country: data[0].name.common,
-                flags: data[0].flags.png,
-                population: data[0].population,
-                region: data[0].region,
-                capital: data[0].capital
-            };
-            
-            const exists = searchedCountries.findIndex(c => c.country === countries.country);
-            
-            if (exists === -1) {
-                searchedCountries.push(countries);
-            } else {
-                searchedCountries.splice(exists, 1);
-                searchedCountries.unshift(countries);
-            }
-
-            divBox.innerHTML = countryHTML(data[0]);
-            errorMessage.style.display = "none";
-            divBox.style.display = "block";
-          
-        } else {
-            errorMessage.innerText = "Country not found, please try again !";
-            errorMessage.style.display = "flex";
-            getCountries();
-        }
-        searchBox.value = "";
-        secBox.append(divBox);
-        
+        searched();
     }
     
 });
+
+btn3.addEventListener("click", async function(event){
+     event.preventDefault();
+    const response = await fetch(urlSearch + searchBox.value);
+    const data = await response.json();
+    const errorMessage = document.getElementById("error-message") as HTMLSpanElement;
+    
+    if (event.type === "click") {
+            secBox.innerHTML = "";
+            searched();
+        
+        }
+    }
+    
+);
 
 
 
