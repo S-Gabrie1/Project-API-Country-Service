@@ -71,8 +71,8 @@ async function getCountries() {
         i += 1;
         counter +=4;
     }
-
 }
+
 
 
 // === A search function to be used for both the "ENTER key" & "Search Button"
@@ -130,18 +130,12 @@ searchBox.addEventListener("keyup", async function(event){
 
 btn3.addEventListener("click", async function(event){
      event.preventDefault();
-    const response = await fetch(urlSearch + searchBox.value);
-    const data = await response.json();
-    const errorMessage = document.getElementById("error-message") as HTMLSpanElement;
-    
     if (event.type === "click") {
             secBox.innerHTML = "";
             searched();
-        
         }
-    }
-    
-);
+        
+});
 
 
 
