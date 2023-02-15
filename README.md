@@ -1,6 +1,6 @@
 # Project Country Service 
 
-![App screenshot](https://i.imgur.com/tTRmyLT.png)
+![App screenshot](https://i.imgur.com/35IC8Qg.png)
 
 1. ## [General Info](###general-info)
   
